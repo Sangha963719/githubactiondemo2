@@ -1,20 +1,28 @@
-# GitHub Actions Demo Pipeline
-name: github actions demo pipline 
-# trigger event
+# name the git hub action 
+name: first time use of github acion 
+# trigger this file 
 on:
-  push:
-    branches:
-      - main
-  jobs: 
-    demo-job:
-      runs-on: ubnutu-latest 
+    push:
+        #event based trigger
+        branches:
+            - main 
 
-      steps:
-        - name: Checkout repository
-          uses: actions/checkout@v2
+#defien the tasks 
+jobs:
+    job1:
+     runs-on: ubuntu-latest 
+ 
+     steps:
+      - name: checkout code 
+        uses: actions/checkout@v2
+      - name: setup python 
+        run: echo "this is python file run successfully  " 
 
-      -name: print message
-      runs: echo "welcome to github actions"
-
-
-      
+    job2:
+     runs-on: ubuntu-latest
+     needs: job1
+     steps:
+      - name: checkout code 
+        uses: actions/checkout@v2
+      - name: second step
+        run: echo "this is python file seconds time run successfully  "
