@@ -1,0 +1,20 @@
+# GitHub Actions Demo Pipeline
+name: github actions demo pipline 
+# trigger event
+on:
+  push:
+    branches:
+      - main
+  jobs: 
+    demo-job:
+      runs-on: ubnutu-latest 
+
+      steps:
+        - name: Checkout repository
+          uses: actions/checkout@v2
+
+      -name: print message
+      runs: echo "welcome to github actions"
+
+
+      
